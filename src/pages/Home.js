@@ -34,10 +34,13 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-image-container">
-          <img 
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-            alt="Calm serene water" 
+          <video 
+            src="/Aletheia Hero Video (2).mp4" 
             className="hero-image"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
           <div className="hero-overlay"></div>
           
@@ -69,25 +72,23 @@ const Home = () => {
 
       {/* The Message */}
       <section className="message-section">
-        <div className="message-split">
-          <div className="message-image-side">
-            <img 
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-              alt="Serene minimalist architecture" 
-              className="message-image"
-            />
-          </div>
-          <div className="message-content-side">
-            <div className="message-content">
-              <p className="message-headline">THE MESSAGE</p>
-              <h2 className="message-title">Heaven in Healthcare</h2>
-              <p className="message-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </p>
-              <Link to="/beliefs" className="btn btn-primary message-cta">
-                Learn More
-              </Link>
-            </div>
+        <div className="message-image-side">
+          <img 
+            src="/Message Section.jpg" 
+            alt="Message section" 
+            className="message-image"
+          />
+        </div>
+        <div className="message-content-side">
+          <div className="message-content">
+            <p className="message-headline">THE MESSAGE</p>
+            <h2 className="message-title">Heaven in Healthcare</h2>
+            <p className="message-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+            <Link to="/beliefs" className="btn btn-primary message-cta">
+              Learn More
+            </Link>
           </div>
         </div>
       </section>
@@ -123,6 +124,9 @@ const Home = () => {
                   src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
                   alt="Coaching & Discipleship" 
                 />
+                <div className="service-panel-description">
+                  <p>Practical, truth-based coaching that helps individuals renew their minds, steward their health, and walk into the complete healing God has already provided. Clients gain tools, accountability, and a clear path toward long-term transformation.</p>
+                </div>
               </div>
               <h3 className="service-panel-title">Coaching & Discipleship</h3>
               <p className="service-panel-location">Individual + Group Formats</p>
@@ -135,6 +139,9 @@ const Home = () => {
                   src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
                   alt="Heaven in Health Conferences" 
                 />
+                <div className="service-panel-description">
+                  <p>Live gatherings that teach the biblical foundation for God-intended health and activate people to live it out. Attendees leave with revelation, practical steps, and the confidence to build Promised-Land "health zones" in their own lives and communities.</p>
+                </div>
               </div>
               <h3 className="service-panel-title">Heaven in Health Conferences</h3>
               <p className="service-panel-location">Public Gatherings for Revelation + Healing</p>
@@ -147,6 +154,9 @@ const Home = () => {
                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
                   alt="Corporate Wellness" 
                 />
+                <div className="service-panel-description">
+                  <p>On-site or virtual trainings that bring Kingdom principles into the workplace—helping teams reduce stress, strengthen health habits, and build a culture rooted in truth and stewardship. Businesses receive actionable strategies that improve wellbeing and performance.</p>
+                </div>
               </div>
               <h3 className="service-panel-title">Corporate Wellness & Culture Seminars</h3>
               <p className="service-panel-location">Bringing Kingdom Health to Workplaces</p>
@@ -159,6 +169,9 @@ const Home = () => {
                   src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
                   alt="Prison Workshops" 
                 />
+                <div className="service-panel-description">
+                  <p>Biblically grounded workshops that restore identity, renew mindsets, and teach practical health stewardship—leading to real transformation that lasts beyond release. Inmates gain truth, tools, and stabilizing habits that dramatically reduce recidivism and create a healthier future for themselves and their families.</p>
+                </div>
               </div>
               <h3 className="service-panel-title">Prison Workshops & Inmate Equipping</h3>
               <p className="service-panel-location">Restoring Identity and Healing Behind Bars</p>
@@ -210,13 +223,19 @@ const Home = () => {
 
             <div className="cta-card">
               <div className="cta-card-icon">
-                <img src="/handshake.png" alt="Handshake" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <img src="/handshakeWhite.png" alt="Handshake" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               </div>
               <h3 className="cta-card-title">Partner</h3>
               <p className="cta-card-text">
                 Join us as an organization partner to bring Kingdom health principles to your community.
               </p>
-              <Link to="/contact" className="cta-card-btn">
+              <Link to="/#contact" onClick={(e) => {
+                e.preventDefault();
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }} className="cta-card-btn">
                 Partner With Us
               </Link>
             </div>
@@ -243,7 +262,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="home-contact-section">
+      <section id="contact" className="home-contact-section">
         <div className="home-contact-background">
           <img 
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 

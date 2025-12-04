@@ -1,5 +1,5 @@
 .services-hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #1e4330 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2d3442 100%);
   color: white;
   padding: 100px 20px;
   text-align: center;
@@ -66,14 +66,14 @@
   font-style: italic;
 }
 
-.service-details {
-  font-size: 1rem;
+.service-item .service-details {
+  font-size: 1.25rem;
   line-height: 1.8;
   color: var(--text-dark);
 }
 
 .services-cta-section {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #1e4330 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2d3442 100%);
   color: white;
   padding: 80px 20px;
   text-align: center;
@@ -109,6 +109,11 @@
   
   .service-item {
     padding: 30px 20px;
+  }
+  
+  .service-item .service-details,
+  .service-details {
+    font-size: 1.25rem;
   }
   
   .cta-buttons {

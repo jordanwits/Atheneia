@@ -16,6 +16,19 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+    if (location.pathname !== '/') {
+      window.location.href = '/#contact';
+    } else {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className="header">
       <div className="header-container">
@@ -61,13 +74,6 @@ const Header = () => {
               Get Involved
             </Link>
             <Link 
-              to="/about" 
-              className={isActive('/about') ? 'active' : ''}
-              onClick={closeMenu}
-            >
-              About
-            </Link>
-            <Link 
               to="/services" 
               className={isActive('/services') ? 'active' : ''}
               onClick={closeMenu}
@@ -82,9 +88,8 @@ const Header = () => {
               Our Team
             </Link>
             <Link 
-              to="/contact" 
-              className={isActive('/contact') ? 'active' : ''}
-              onClick={closeMenu}
+              to="/#contact" 
+              onClick={handleContactClick}
             >
               Contact Us
             </Link>

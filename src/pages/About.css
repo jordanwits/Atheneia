@@ -1,5 +1,5 @@
 .about-hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #1e4330 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2d3442 100%);
   color: white;
   padding: 100px 20px;
   text-align: center;
@@ -36,7 +36,7 @@
 }
 
 .story-text {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.9;
   color: var(--text-dark);
   margin-bottom: 20px;
@@ -68,7 +68,7 @@
 }
 
 .value-card {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #1e4330 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2d3442 100%);
   color: white;
   padding: 30px;
   border-radius: 8px;
@@ -78,7 +78,7 @@
 
 .value-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(44, 95, 65, 0.3);
+  box-shadow: 0 8px 25px rgba(62, 68, 89, 0.3);
 }
 
 .value-card h3 {
@@ -97,7 +97,7 @@
 }
 
 .meaning-text {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.9;
   color: var(--text-dark);
   margin-bottom: 20px;
@@ -137,7 +137,7 @@
 }
 
 .founder-bio {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.9;
   color: var(--text-dark);
   margin-bottom: 20px;

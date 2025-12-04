@@ -7,12 +7,13 @@
 main {
   flex: 1;
   margin: 0;
-  padding: 0;
+  padding: 180px 0 0;
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Section spacing */
@@ -33,6 +34,10 @@ section.hero {
   section.hero {
     padding: 0 !important;
   }
+
+  main {
+    padding-top: 140px;
+  }
 }
 
 /* Container */
@@ -48,6 +53,7 @@ section.hero {
   padding: 14px 32px;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
+  font-family: 'Lustria', serif;
   border-radius: 4px;
   transition: all 0.3s ease;
   border: none;
@@ -60,9 +66,9 @@ section.hero {
 }
 
 .btn-primary:hover {
-  background-color: #1e4330;
+  background-color: #2d3442;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(44, 95, 65, 0.3);
+  box-shadow: 0 4px 12px rgba(62, 68, 89, 0.3);
 }
 
 .btn-secondary {
@@ -71,9 +77,9 @@ section.hero {
 }
 
 .btn-secondary:hover {
-  background-color: #c49564;
+  background-color: #b0c47a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+  box-shadow: 0 4px 12px rgba(198, 213, 140, 0.3);
 }
 
 .btn-outline {

@@ -5,10 +5,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import MissionVision from './pages/MissionVision';
 import GetInvolved from './pages/GetInvolved';
-import About from './pages/About';
 import Services from './pages/Services';
 import OurTeam from './pages/OurTeam';
-import Contact from './pages/Contact';
 import './App.css';
 
 function App() {
@@ -21,10 +19,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/mission-vision" element={<MissionVision />} />
             <Route path="/get-involved" element={<GetInvolved />} />
-            <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/our-team" element={<OurTeam />} />
-            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />

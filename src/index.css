@@ -5,15 +5,15 @@
 }
 
 :root {
-  --primary-color: #2c5f41;
-  --secondary-color: #d4a574;
-  --accent-color: #8b7355;
-  --text-dark: #1a1a1a;
-  --text-light: #666;
-  --bg-light: #fafafa;
+  --primary-color: #3e4459;
+  --secondary-color: #c6d58c;
+  --accent-color: #7ba8a2;
+  --text-dark: #000000;
+  --text-light: #657c90;
+  --bg-light: #e8e3d7;
   --bg-white: #ffffff;
-  --gold: #d4a574;
-  --green: #2c5f41;
+  --accent-secondary: #615e6d;
+  --accent-teal: #7ba8a2;
 
   /* Typography Scale - Font Sizes */
   --font-size-xs: 0.75rem;      /* 12px */
@@ -43,6 +43,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-dark);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
