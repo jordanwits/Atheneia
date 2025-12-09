@@ -1,7 +1,126 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import './Home.css';
+
+const CustomDropdown = ({ id, name, value, onChange, options, placeholder }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setFocusedIndex(-1);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleSelect = (optionValue) => {
+    onChange({
+      target: {
+        name: name,
+        value: optionValue
+      }
+    });
+    setIsOpen(false);
+    setFocusedIndex(-1);
+    buttonRef.current?.focus();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setIsOpen(!isOpen);
+      if (!isOpen && options.length > 0) {
+        setFocusedIndex(0);
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (!isOpen) {
+        setIsOpen(true);
+        setFocusedIndex(0);
+      } else {
+        setFocusedIndex((prev) => (prev < options.length - 1 ? prev + 1 : prev));
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (isOpen) {
+        setFocusedIndex((prev) => (prev > 0 ? prev - 1 : 0));
+      }
+    } else if (e.key === 'Escape') {
+      setIsOpen(false);
+      setFocusedIndex(-1);
+      buttonRef.current?.focus();
+    } else if (e.key === 'Enter' && isOpen && focusedIndex >= 0) {
+      e.preventDefault();
+      handleSelect(options[focusedIndex].value);
+    }
+  };
+
+  const selectedOption = options.find(opt => opt.value === value) || { label: placeholder, value: '' };
+
+  return (
+    <div className="custom-dropdown" ref={dropdownRef}>
+      <button
+        type="button"
+        ref={buttonRef}
+        className={`custom-dropdown-toggle ${isOpen ? 'open' : ''}`}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          if (!isOpen) setFocusedIndex(0);
+        }}
+        onKeyDown={handleKeyDown}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label="Select subject"
+      >
+        <span className={value ? '' : 'placeholder'}>{selectedOption.label}</span>
+        <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9L1 4h10z" fill="#3e4459"/>
+        </svg>
+      </button>
+      {isOpen && (
+        <ul className="custom-dropdown-menu" role="listbox">
+          {options.map((option, index) => (
+            <li
+              key={option.value}
+              className={`custom-dropdown-option ${value === option.value ? 'selected' : ''} ${focusedIndex === index ? 'focused' : ''}`}
+              onClick={() => handleSelect(option.value)}
+              onMouseEnter={() => setFocusedIndex(index)}
+              role="option"
+              aria-selected={value === option.value}
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
+      )}
+      <select
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="custom-dropdown-hidden"
+        tabIndex={-1}
+        aria-hidden="true"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 const Home = () => {
   const [contactForm, setContactForm] = useState({
@@ -10,6 +129,15 @@ const Home = () => {
     subject: '',
     message: ''
   });
+
+  const subjectOptions = [
+    { value: '', label: 'Select a subject' },
+    { value: 'General Contact', label: 'General Contact' },
+    { value: 'Give', label: 'Give' },
+    { value: 'Host an Event', label: 'Host an Event' },
+    { value: 'Volunteer', label: 'Volunteer' },
+    { value: 'Join Organization', label: 'Join Organization' }
+  ];
 
   const handleContactChange = (e) => {
     setContactForm({
@@ -35,7 +163,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-image-container">
           <video 
-            src="/Aletheia Hero Video (2).mp4" 
+            src="/Aletheia Hero Video.mp4" 
             className="hero-image"
             autoPlay
             loop
@@ -43,6 +171,15 @@ const Home = () => {
             playsInline
           />
           <div className="hero-overlay"></div>
+          
+          {/* Logo Overlay */}
+          <div className="hero-logo-overlay">
+            <img 
+              src="/NavyLogo.png" 
+              alt="Aletheia Logo" 
+              className="hero-logo"
+            />
+          </div>
           
           {/* Text Overlay */}
           <div className="hero-text-overlay">
@@ -83,11 +220,16 @@ const Home = () => {
           <div className="message-content">
             <p className="message-headline">THE MESSAGE</p>
             <h2 className="message-title">Heaven in Healthcare</h2>
-            <p className="message-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
-            <Link to="/beliefs" className="btn btn-primary message-cta">
-              Learn More
+            <div className="message-description">
+              <p>
+                For generations, people have looked to human systems for healing—only to end up disappointed, discouraged, or dependent. Today our world is overwhelmed by chronic illness, confusion, and costly interventions, yet true healing was never meant to come from these systems. Jesus already paid for complete healing, and Heaven still speaks a better word.
+              </p>
+              <p>
+                Aletheia exists to reconnect people with God as their ultimate source of health. We introduce a Kingdom model of healthcare—one rooted in truth, guided by Christ, and sustained through Spirit-led stewardship. Through renewed beliefs and practical tools, we help individuals hear His voice, receive His wisdom, and walk in the healing He has already provided.
+              </p>
+            </div>
+            <Link to="/contact" className="btn btn-primary message-cta">
+              Connect with Our Team
             </Link>
           </div>
         </div>
@@ -110,9 +252,9 @@ const Home = () => {
           <div className="services-text-side">
             <div className="services-text-content">
               <p className="services-headline">SERVICES</p>
-              <h2 className="services-title">Complete Healing Services</h2>
+              <h2 className="services-title">Promised Land of Healing</h2>
               <p className="services-description">
-                Unlock pathways to transformation through our curated programs designed to bring Heaven's healing to your life.
+                Our services guide you into God's design for complete healing—physically, emotionally, and spiritually. Through teaching, coaching, and activation, we help you identify root causes, align with truth, and cultivate a lifestyle that reflects Heaven's way of health.
               </p>
             </div>
           </div>
@@ -130,7 +272,7 @@ const Home = () => {
               </div>
               <h3 className="service-panel-title">Coaching & Discipleship</h3>
               <p className="service-panel-location">Individual + Group Formats</p>
-              <Link to="/services" className="service-panel-btn">DISCOVER</Link>
+              <Link to="/services" className="service-panel-btn">Discover</Link>
             </div>
 
             <div className="service-panel">
@@ -145,7 +287,7 @@ const Home = () => {
               </div>
               <h3 className="service-panel-title">Heaven in Health Conferences</h3>
               <p className="service-panel-location">Public Gatherings for Revelation + Healing</p>
-              <Link to="/services" className="service-panel-btn">DISCOVER</Link>
+              <Link to="/services" className="service-panel-btn">Discover</Link>
             </div>
 
             <div className="service-panel">
@@ -160,7 +302,7 @@ const Home = () => {
               </div>
               <h3 className="service-panel-title">Corporate Wellness & Culture Seminars</h3>
               <p className="service-panel-location">Bringing Kingdom Health to Workplaces</p>
-              <Link to="/services" className="service-panel-btn">DISCOVER</Link>
+              <Link to="/services" className="service-panel-btn">Discover</Link>
             </div>
 
             <div className="service-panel">
@@ -175,7 +317,7 @@ const Home = () => {
               </div>
               <h3 className="service-panel-title">Prison Workshops & Inmate Equipping</h3>
               <p className="service-panel-location">Restoring Identity and Healing Behind Bars</p>
-              <Link to="/services" className="service-panel-btn">DISCOVER</Link>
+              <Link to="/services" className="service-panel-btn">Discover</Link>
             </div>
           </div>
         </div>
@@ -236,7 +378,7 @@ const Home = () => {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }} className="cta-card-btn">
-                Partner With Us
+                Partner with Us
               </Link>
             </div>
 
@@ -308,13 +450,13 @@ const Home = () => {
               </div>
               <div className="home-form-group">
                 <label htmlFor="home-contact-subject">Subject</label>
-                <input
-                  type="text"
+                <CustomDropdown
                   id="home-contact-subject"
                   name="subject"
                   value={contactForm.subject}
                   onChange={handleContactChange}
-                  placeholder="What's this about?"
+                  options={subjectOptions}
+                  placeholder="Select a subject"
                 />
               </div>
               <div className="home-form-group">

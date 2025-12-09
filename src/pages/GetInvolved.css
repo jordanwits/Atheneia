@@ -2,7 +2,7 @@
 .get-involved-hero {
   background: linear-gradient(135deg, var(--primary-color) 0%, #2d3442 100%);
   color: white;
-  padding: 100px 20px;
+  padding: clamp(60px, 5rem, 100px) 20px;
   text-align: center;
 }
 
@@ -23,7 +23,7 @@
 
 @media (max-width: 768px) {
   .get-involved-hero {
-    padding: 80px 20px;
+    padding: clamp(60px, 5rem, 80px) 20px;
   }
   
   .page-title {
@@ -37,7 +37,7 @@
 
 /* Sections Grid */
 .get-involved-sections {
-  padding: 100px 20px;
+  padding: clamp(60px, 5rem, 100px) 20px;
   background-color: var(--bg-white);
 }
 

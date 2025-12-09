@@ -76,10 +76,58 @@
   font-size: var(--font-size-sm);
 }
 
+@media (max-width: 968px) {
+  .footer-content {
+    gap: 30px;
+  }
+  
+  .footer-section h3 {
+    font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  }
+  
+  .footer-section h4 {
+    font-size: clamp(1rem, 0.95rem + 0.35vw, 1.125rem);
+  }
+}
+
 @media (max-width: 768px) {
+  .footer {
+    padding: clamp(40px, 3rem, 60px) 20px 20px;
+  }
+  
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: clamp(25px, 1.8rem, 30px);
+    margin-bottom: clamp(30px, 2.2rem, 40px);
+  }
+  
+  .footer-section h3 {
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+    margin-bottom: 8px;
+  }
+  
+  .footer-section h4 {
+    font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1rem);
+    margin-bottom: 12px;
+  }
+  
+  .footer-section p {
+    font-size: clamp(0.875rem, 0.8rem + 0.4vw, 0.95rem);
+  }
+  
+  .footer-bottom {
+    padding-top: 15px;
+    font-size: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: clamp(30px, 2rem, 40px) 15px 15px;
+  }
+  
+  .footer-content {
+    gap: 25px;
   }
 }
 

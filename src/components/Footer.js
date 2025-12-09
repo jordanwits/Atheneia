@@ -1,14 +1,23 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleContactClick = (e) => {
     e.preventDefault();
     if (location.pathname !== '/') {
-      window.location.href = '/#contact';
+      // Navigate to home page with hash
+      navigate('/#contact');
+      // Wait for page to load, then scroll to contact section
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
     } else {
       const contactSection = document.getElementById('contact');
       if (contactSection) {
@@ -46,7 +55,7 @@ const Footer = () => {
             <ul>
               <li><a href="https://chat.whatsapp.com" target="_blank" rel="noopener noreferrer">WhatsApp Community</a></li>
               <li><Link to="/#contact" onClick={handleContactClick}>Contact Us</Link></li>
-              <li><Link to="/get-involved">Partner With Us</Link></li>
+              <li><Link to="/get-involved">Partner with Us</Link></li>
             </ul>
           </div>
         </div>

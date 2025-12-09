@@ -55,7 +55,7 @@ const GetInvolved = () => {
                 Join us as an organization partner to bring Kingdom health principles to your community, church, or workplace.
               </p>
               <Link to="/#contact" onClick={handleContactClick} className="card-cta">
-                Partner With Us
+                Partner with Us
               </Link>
             </div>
 

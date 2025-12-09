@@ -1,7 +1,7 @@
 .team-hero {
   background: linear-gradient(135deg, var(--primary-color) 0%, #2d3442 100%);
   color: white;
-  padding: 100px 20px;
+  padding: clamp(60px, 5rem, 100px) 20px;
   text-align: center;
 }
 
@@ -28,7 +28,7 @@
 
 .founder-section {
   background-color: var(--bg-white);
-  padding: 80px 20px;
+  padding: clamp(60px, 5rem, 80px) 20px;
 }
 
 .founder-content {
@@ -90,7 +90,7 @@
 
 .team-members-section {
   background-color: var(--bg-light);
-  padding: 80px 20px;
+  padding: clamp(60px, 5rem, 80px) 20px;
 }
 
 .team-intro {

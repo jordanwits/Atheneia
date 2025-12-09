@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path) => location.pathname === path;
 
@@ -20,7 +21,15 @@ const Header = () => {
     e.preventDefault();
     closeMenu();
     if (location.pathname !== '/') {
-      window.location.href = '/#contact';
+      // Navigate to home page with hash
+      navigate('/#contact');
+      // Wait for page to load, then scroll to contact section
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
     } else {
       const contactSection = document.getElementById('contact');
       if (contactSection) {

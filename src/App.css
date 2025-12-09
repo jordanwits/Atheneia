@@ -4,10 +4,14 @@
   flex-direction: column;
 }
 
-main {
+.main {
   flex: 1;
   margin: 0;
   padding: 180px 0 0;
+}
+
+.main--flush-top {
+  padding-top: 0;
 }
 
 /* Smooth scrolling */
@@ -26,6 +30,27 @@ section.hero {
   padding: 0 !important;
 }
 
+/* Standard breakpoints */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 968px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  }
+  
+  .section-subtitle {
+    font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.125rem);
+  }
+}
+
 @media (max-width: 768px) {
   section {
     padding: 0;
@@ -35,8 +60,41 @@ section.hero {
     padding: 0 !important;
   }
 
-  main {
+  .main {
     padding-top: 140px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+    margin-bottom: 15px;
+  }
+  
+  .section-subtitle {
+    font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1rem);
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding-top: 130px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  .section-title {
+    font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
   }
 }
 
@@ -45,6 +103,19 @@ section.hero {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+
+/* Ensure flush-top layouts stay flush at all breakpoints */
+@media (max-width: 768px) {
+  .main--flush-top {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .main--flush-top {
+    padding-top: 0;
+  }
 }
 
 /* Button styles */
